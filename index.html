@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "UTF-8">
+      <title>IPC</title>
+      <script>
+
+        const {ipcRenderer}=require('electron')
+
+        //Async message sender
+        ipcRenderer.send('client-sender','async hello server')
+
+        ipcRenderer.on('server-sender',(event,arg)=>{
+          console.log(arg);
+        })
+
+        console.log(ipcRenderer.sendSync('synchronous-message','sync hello server'));
+
+      </script>
+   </head>
+
+   <body>
+
+   </body>
+</html>
